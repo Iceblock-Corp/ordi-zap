@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { useAccount, useConnect } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+// import { useWallet } from '@/utils/walletProvider';
 
 import { secondaryBtnClasses } from "./Styles";
 
@@ -25,19 +26,10 @@ console.log(account.isConnected )
           largeScreen: "full",
         }}
         chainStatus={"none"}
-        label={"Connect"}
+        label={"Connect EVM walllet"}
         showBalance={false}
       />
 
-      {!account.isConnected && (
-        <button
-          type="button"
-          className={secondaryBtnClasses}
-          onClick={createWallet}
-        >
-          Create wallet
-        </button>
-      )}
-    </>
+          </>
   );
 };

@@ -83,3 +83,28 @@ select {
     transform: scale(1.2, 1);
   }
 }
+/* Custom Dark Modal Styles */
+.custom-dark-modal .ant-modal-content {
+  background-color: #1a1a1a;  /* Dark background for the modal */
+  color: white;  /* White text */
+}
+
+.custom-dark-modal .ant-modal-header {
+  background-color: #333;  /* Dark header background */
+  color: white;  /* White text in header */
+}
+
+.custom-dark-modal .ant-modal-footer {
+  background-color: #333;  /* Dark footer background */
+  color: white;  /* White text in footer */
+}
+
+.custom-dark-modal .ant-btn {
+  background-color: #05CFB2;  /* Custom button color */
+  color: white;  /* Button text color */
+}
+
+/* Optional: Change color of modal title */
+.custom-dark-modal .ant-modal-title {
+  color: white;
+}

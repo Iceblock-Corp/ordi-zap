@@ -40,6 +40,8 @@ if (
   throw new Error("Missing env var");
 }
 
+import { WalletProvider } from "../app/utils/walletProvider";
+
 const connectors = connectorsForWallets(
   [
     {
@@ -92,28 +94,29 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <WagmiProvider config={config}>
-        <QueryClientProvider client={queryClient}>
-          {/* <RainbowKitProvider
+        <QueryClientProvider client={queryClient}> 
+          <WalletProvider>
+          <RainbowKitProvider
             initialChain={environment === "mainnet" ? base : baseSepolia}
             theme={darkTheme({
               borderRadius: "large",
               accentColor: "#05CFB2",
               fontStack: "system",
             })}
-          > */}
-          <OrdConnectProvider network={Network.TESTNET} chain={Chain.BITCOIN}>
-            <BiconomyProvider
-              config={{
-                biconomyPaymasterApiKey,
-                bundlerUrl,
-              }}
-              queryClient={queryClient}
-            >
-              {children}
-            </BiconomyProvider>
-
-            {/* </RainbowKitProvider> */}
-          </OrdConnectProvider>
+          >
+           
+              <BiconomyProvider
+                config={{
+                  biconomyPaymasterApiKey,
+                  bundlerUrl,
+                }}
+                queryClient={queryClient}
+              >
+                {children}
+              </BiconomyProvider>
+          
+          </RainbowKitProvider> 
+           </WalletProvider>
         </QueryClientProvider>
       </WagmiProvider>
     </ThemeProvider>
