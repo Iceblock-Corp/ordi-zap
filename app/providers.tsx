@@ -26,6 +26,12 @@ import {
   trustWallet,
   walletConnectWallet,
 } from "@rainbow-me/rainbowkit/wallets";
+import {
+  Chain,
+  Network,
+  OrdConnectProvider,
+  OrdConnectKit,
+} from "@ordzaar/ord-connect";
 
 if (
   !process.env.NEXT_PUBLIC_PAYMASTER_API_KEY ||
@@ -87,14 +93,15 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <WagmiProvider config={config}>
         <QueryClientProvider client={queryClient}>
-          <RainbowKitProvider
+          {/* <RainbowKitProvider
             initialChain={environment === "mainnet" ? base : baseSepolia}
             theme={darkTheme({
               borderRadius: "large",
-              accentColor: "#3384F7",
-              fontStack: "Inter" as "system",
+              accentColor: "#05CFB2",
+              fontStack: "system",
             })}
-          >
+          > */}
+          <OrdConnectProvider network={Network.TESTNET} chain={Chain.BITCOIN}>
             <BiconomyProvider
               config={{
                 biconomyPaymasterApiKey,
@@ -104,7 +111,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
             >
               {children}
             </BiconomyProvider>
-          </RainbowKitProvider>
+
+            {/* </RainbowKitProvider> */}
+          </OrdConnectProvider>
         </QueryClientProvider>
       </WagmiProvider>
     </ThemeProvider>

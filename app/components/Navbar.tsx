@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import { ThemeSwitch } from "./ThemeSwitch";
 import { WalletButtons } from "./WalletButtons";
 import { PaycrestLogo } from "./ImageAssets";
+import Image from "next/image";
+import { Chain, Network, OrdConnectProvider, OrdConnectKit } from "@ordzaar/ord-connect";
 
 export const Navbar = () => {
   const account = useAccount();
@@ -25,14 +27,16 @@ export const Navbar = () => {
       >
         <div className="flex lg:flex-1">
           <Link href="/" className="flex items-center gap-1">
-            <div className="text-lg font-semibold">Zap</div>
-            <PaycrestLogo className="size-3" />
+          <Image src="/ordilink.png" width={20} height={20} alt="Ordilink_logo"/>
+            <div className="text-lg font-semibold">Zap by Ordilink</div>
           </Link>
         </div>
 
         <div className="flex flex-1 items-center justify-end gap-3 text-sm">
-          <WalletButtons />
-          <div className={`${account.isConnected ? "" : "hidden lg:block"}`}>
+          {/* <WalletButtons /> */}
+          <OrdConnectKit />
+
+          <div className={`${account.isConnected ? "" : "block"}`}>
             <ThemeSwitch />
           </div>
         </div>

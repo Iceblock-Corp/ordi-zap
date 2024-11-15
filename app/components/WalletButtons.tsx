@@ -16,7 +16,7 @@ export const WalletButtons = () => {
       connect({ connector: coinbaseWalletConnector });
     }
   }, [connectors, connect]);
-
+console.log(account.isConnected )
   return (
     <>
       <ConnectButton

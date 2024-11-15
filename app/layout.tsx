@@ -12,8 +12,12 @@ import { ToastContainer } from "react-toastify";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Zap by Paycrest",
+  title: "Zap by Ordiliink",
   description: "Crypto-to-fiat payments in a zap.",
+  icons: {
+    icon: '/ordilink.png', // Path to your favicon
+  },
+
 };
 
 export default function RootLayout({
