@@ -159,7 +159,7 @@ console.log(walletData.isConnected)
       onClick={openWalletModal}
       className="p-3"
     >
-      Tap Wallet
+      Tap Wallets
     </Button>
     
 
