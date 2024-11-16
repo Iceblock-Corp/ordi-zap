@@ -111,11 +111,13 @@ console.log(walletData.isConnected)
 
             ) : walletData.isConnected ? (
               <Button
-                style={{ backgroundColor: "#FF3B3B" }}
+                style={{ backgroundColor: "transparent" }}
                 onClick={disconnectWallet}
-                className="text-white"
+                className="text-[#FF3B3B] p-4 rounded-xl w-full"
               >
-                Disconnect Wallet
+                  <p className="font-bold">Disconnect </p> 
+                <p className="text-slate-500"> {walletData.account.substring(0, 5)}</p>
+               
               </Button>
             ) : (
               <Button
