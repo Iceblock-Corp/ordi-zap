@@ -26,6 +26,12 @@ import {
   trustWallet,
   walletConnectWallet,
 } from "@rainbow-me/rainbowkit/wallets";
+import {
+  Chain,
+  Network,
+  OrdConnectProvider,
+  OrdConnectKit,
+} from "@ordzaar/ord-connect";
 
 if (
   !process.env.NEXT_PUBLIC_PAYMASTER_API_KEY ||
@@ -33,6 +39,8 @@ if (
 ) {
   throw new Error("Missing env var");
 }
+
+import { WalletProvider } from "../app/utils/walletProvider";
 
 const connectors = connectorsForWallets(
   [
@@ -86,25 +94,29 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <WagmiProvider config={config}>
-        <QueryClientProvider client={queryClient}>
+        <QueryClientProvider client={queryClient}> 
+          <WalletProvider>
           <RainbowKitProvider
             initialChain={environment === "mainnet" ? base : baseSepolia}
             theme={darkTheme({
               borderRadius: "large",
-              accentColor: "#3384F7",
-              fontStack: "Inter" as "system",
+              accentColor: "#05CFB2",
+              fontStack: "system",
             })}
           >
-            <BiconomyProvider
-              config={{
-                biconomyPaymasterApiKey,
-                bundlerUrl,
-              }}
-              queryClient={queryClient}
-            >
-              {children}
-            </BiconomyProvider>
-          </RainbowKitProvider>
+           
+              <BiconomyProvider
+                config={{
+                  biconomyPaymasterApiKey,
+                  bundlerUrl,
+                }}
+                queryClient={queryClient}
+              >
+                {children}
+              </BiconomyProvider>
+          
+          </RainbowKitProvider> 
+           </WalletProvider>
         </QueryClientProvider>
       </WagmiProvider>
     </ThemeProvider>
