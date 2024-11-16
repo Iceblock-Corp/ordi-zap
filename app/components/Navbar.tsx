@@ -49,12 +49,12 @@ console.log(walletData.isConnected)
       installLink: "https://unisat.io/",
       logo: "https://pbs.twimg.com/profile_images/1635946239555674112/fA12aBLU_400x400.jpg",
     },
-    {
-      name: "MetaMask",
-      installed: typeof window !== "undefined" && !!window.ethereum,
-      installLink: "https://metamask.io/",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/2048px-MetaMask_Fox.svg.png",
-    },
+    // {
+    //   name: "MetaMask",
+    //   installed: typeof window !== "undefined" && !!window.ethereum,
+    //   installLink: "https://metamask.io/",
+    //   logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/2048px-MetaMask_Fox.svg.png",
+    // },
   ];
 
   const closeAllModals = () => {
@@ -147,19 +147,22 @@ console.log(walletData.isConnected)
   footer={null}
   className="custom-dark-modal"  // Add custom class for styling
 >
-  <div className="flex flex-col gap-4">
+  <div className="flex flex-col gap-8 px-20 py-10">
     {/* Show RainbowKit WalletButtons only if connected */}
-    <Button style={{ backgroundColor: "#05CFB2", color: "white" }}>
-      <WalletButtons />
+    <Button style={{ backgroundColor: "transparent", color: "white" }} className="p-4 border-t-0 border-b-1 border-x-0">
+      <WalletButtons/>
     </Button>
 
     {/* Show other wallet options if not connected */}
     <Button
       style={{ backgroundColor: "#05CFB2", color: "white" }}
       onClick={openWalletModal}
+      className="p-3"
     >
       Tap Wallet
     </Button>
+    
+
   </div>
 </Modal>
 
@@ -171,7 +174,7 @@ console.log(walletData.isConnected)
   footer={null}
   className="custom-dark-modal"  // Add custom class for styling
 >
-  <ul className="flex w-full text-white flex-col gap-4">
+  <ul className="flex w-full text-white flex-col gap-4 py-10 px-10 lg:px-20">
     {walletOptions.map((wallet, index) => (
       <li key={index} className="w-full ">
         <button

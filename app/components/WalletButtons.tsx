@@ -28,6 +28,7 @@ console.log(account.isConnected )
         chainStatus={"none"}
         label={"Connect EVM walllet"}
         showBalance={false}
+        
       />
 
           </>
